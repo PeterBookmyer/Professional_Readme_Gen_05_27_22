@@ -79,41 +79,43 @@ inquirer
     },
   ])
   .then((response) => {
-    const output = licenses(response.license);
+    const output = response.license;
     const template = `# ${response.title}
-    
-    ## DESCRIPTION
-    -${response.description}
+## DESCRIPTION
+-${response.description}
 
-    ## TABLE OF CONTENTS
+## TABLE OF CONTENTS
+-[Installation](#installation)
 
-    -[Installation](#installation)
-    -[Usage](#usage)
-    -[Contribution](#contribution)
-    -[License](#license)
-    -[Tests](#tests)
-    -[Contact](#contact)
+-[Usage](#usage)
 
-    ##INSTALLATION
-    -${response.install}
+-[Contribution](#contribution)
 
-    ##USAGE
-    -${response.usage}
+-[License](#licenses)
 
-    ##CONTRIBUTION
-    -${response.contrib}
+-[Tests](#tests)
 
-    ##Licenses
-    ${output.name}
-    ${output.text}
+-[Contact](#contact)
 
-    ##TESTS
-    -${response.tests}
+## INSTALLATION
+-${response.install}
 
-    ##CONTACT
-    -${response.github} 
-    -${response.email}
-    `;
+## USAGE
+-${response.usage}
+
+## CONTRIBUTION
+-${response.contrib}
+
+## LICENSES
+${output.name}
+${output.text}
+
+## TESTS
+-${response.tests}
+
+## CONTACT
+-${response.github} 
+-${response.email}`;
 
     // function to write README file
     fs.writeFile("README.MD", template, (err) => {
